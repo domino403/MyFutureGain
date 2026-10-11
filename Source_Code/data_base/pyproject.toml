@@ -1,0 +1,9 @@
+[project]
+name = "postgresql-module"
+version = "0.1.0"
+description = "placeholder"
+authors = [
+    { name = "domino403", email = "gildominik@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []

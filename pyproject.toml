@@ -1,0 +1,18 @@
+[project]
+name = "myfuturegain"
+version = "0.1.0"
+description = "placeholder"
+authors = [
+    { name = "domino403", email = "gildominik@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pre-commit>=4.6.2",
+    "ruff>=0.17.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "Source_Code/*",
+    "Tests",
+]
