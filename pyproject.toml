@@ -9,10 +9,14 @@ requires-python = ">=3.12"
 dependencies = [
     "pre-commit>=4.6.2",
     "ruff>=0.17.0",
+    "zensical",
 ]
 
 [tool.uv.workspace]
 members = [
-    "Source_Code/*",
+    "Source_Code/back_end",
+    "Source_Code/data_base",
+    "Source_Code/data_api",
+    "Source_Code/front_end",
     "Tests",
 ]
