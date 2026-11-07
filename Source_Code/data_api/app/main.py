@@ -1,7 +1,10 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from sqlalchemy import create_engine, text
+from sqlalchemy.orm import Session
+
+from app.database.connection import get_db
 
 app = FastAPI()
 
@@ -12,6 +15,12 @@ engine = create_engine(database_url)
 
 @app.get("/health")
 def health_check():
+    return {"status": "ok"}
+
+
+@app.get("/example")
+def example(db: Session = Depends(get_db)):
+    # Database operations
     return {"status": "ok"}
 
 

@@ -27,7 +27,7 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./Source_Code/data_api/app:/app/app
+      - ./Source_Code/data_api:/app
 
 volumes:
   postgres_data:
