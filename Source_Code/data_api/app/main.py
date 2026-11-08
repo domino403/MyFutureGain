@@ -1,10 +1,12 @@
 import os
+from typing import Annotated
 
 from fastapi import Depends, FastAPI
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import Session
 
 from app.database.connection import get_db
+
 
 app = FastAPI()
 
@@ -19,7 +21,7 @@ def health_check():
 
 
 @app.get("/example")
-def example(db: Session = Depends(get_db)):
+def example(db: Annotated[Session, Depends(get_db)]):
     # Database operations
     return {"status": "ok"}
 
