@@ -161,3 +161,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# local llm agent files
+start-claude-local.ps1
+litlellm-config.yaml

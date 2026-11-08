@@ -7,6 +7,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "litellm[proxy]>=1.108.3",
     "pre-commit>=4.6.2",
     "ruff>=0.17.0",
     "zensical",
@@ -20,3 +21,32 @@ members = [
     "Source_Code/front_end",
     "Tests",
 ]
+
+
+[tool.ruff]
+line-length = 120
+output-format = "grouped"
+
+[tool.ruff.lint]
+extend-select = [
+    "FAST",
+    "NPY",
+    "PTH",
+    "PT",
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.analyze]
+detect-string-imports = true
+
+[tool.ruff.lint.isort]
+# Use a single line after each import block.
+lines-after-imports = 2
