@@ -1,29 +1,49 @@
 [project]
-    name = "grand-testing-module"
-    version = "0.1.0"
-    description = "placeholder"
-    authors = [
-        { name = "domino403", email = "gildominik@gmail.com" }
-    ]
-    requires-python = ">=3.13"
+name = "grand-testing-module"
+version = "0.1.0"
+description = "placeholder"
+authors = [
+    { name = "domino403", email = "gildominik@gmail.com" }
+]
+requires-python = ">=3.13"
 
-    dependencies = [
-        "pytest",
-    ]
+dependencies = [        
+    "pytest",
+]
 
 [dependency-groups]
-    data-api = [
-        "playwright>=1.63.0",
-    ]
+data-api = [
+    "playwright>=1.63.0",
+]
 
-    front-end = [
-        "playwright>=1.63.0",
-    ]
+front-end = [
+    "playwright>=1.63.0",
+]
 
-    data-base = [
-        "playwright>=1.63.0",
-    ]
+data-base = [
+    "playwright>=1.63.0",
+    "alembic>=1.20.1",
+    "psycopg[binary]>=3.3.8",
+    "sqlalchemy>=2.1.8",
+]
 
-    back-end = [
-        "playwright>=1.63.0",
-    ]
+back-end = [
+    "playwright>=1.63.0",
+]
+
+
+[tool.uv]
+package = false
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "back_end",
+    "data_api",
+    "data_base",
+    "front_end",
+]
+pythonpath = [
+    "../Source_Code/data_api",
+]
+addopts = "-v --strict-markers"

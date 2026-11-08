@@ -3,10 +3,9 @@ from logging.config import fileConfig
 
 from alembic import context
 from app.database.base import Base
+from app.models import Account, Portfolio  # noqa
 from sqlalchemy import engine_from_config, pool
 
-
-# from app.models import Account, Portfolio
 
 config = context.config
 
