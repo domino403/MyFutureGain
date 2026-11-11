@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 import subprocess
 import sys
@@ -12,6 +13,7 @@ from sqlalchemy.orm import Session
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_API_DIR = ROOT_DIR / "Source_Code" / "data_api"
 ALEMBIC_CONFIG = DATA_API_DIR / "alembic.ini"
+load_dotenv()
 
 
 @pytest.fixture(scope="session")
