@@ -50,3 +50,10 @@ detect-string-imports = true
 [tool.ruff.lint.isort]
 # Use a single line after each import block.
 lines-after-imports = 2
+
+
+[tool.pytest.ini.options]
+addopts = "-ra -q -tb=short"
+testpaths = [
+    "Tests"
+]
