@@ -1,10 +1,9 @@
 import uuid
 
 import pytest
+from app.models import Account, Portfolio
 from sqlalchemy import delete
 from sqlalchemy.exc import IntegrityError
-
-from app.models import Account, Portfolio
 
 
 def create_portfolio(

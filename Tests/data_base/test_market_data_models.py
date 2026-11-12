@@ -2,10 +2,9 @@ from datetime import date
 from decimal import Decimal
 
 import pytest
+from app.models import HistoricalPrice, Instrument
 from sqlalchemy import delete
 from sqlalchemy.exc import IntegrityError
-
-from app.models import HistoricalPrice, Instrument
 
 
 def create_instrument(
@@ -209,8 +208,8 @@ def test_historical_price_rejects_duplicate_instrument_date_source(
 @pytest.mark.parametrize(
     "price",
     [
-        Decimal("0"),
-        Decimal("-1"),
+        Decimal(0),
+        Decimal(-1),
         Decimal("-100.50"),
     ],
 )

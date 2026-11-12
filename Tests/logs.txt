@@ -1,0 +1,299 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- D:\MyFutureGain\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\MyFutureGain\Tests
+configfile: pyproject.toml
+testpaths: back_end, data_api, data_base, front_end
+plugins: anyio-4.16.0, platformdirs-4.13.0
+collecting ... collected 71 items
+
+data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_prices 
+[PERF] Database connectivity: 0.10s
+[PERF] Alembic migration: 0.71s
+PASSED
+data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_empty_list PASSED
+data_base/test_historical_price_repository.py::test_get_latest_returns_most_recent_price PASSED
+data_base/test_historical_price_repository.py::test_get_latest_returns_none_when_no_prices_exist PASSED
+data_base/test_historical_price_repository.py::test_upsert_many_inserts_multiple_prices PASSED
+data_base/test_historical_price_repository.py::test_upsert_many_updates_existing_price PASSED
+data_base/test_historical_price_repository.py::test_upsert_many_allows_different_sources_for_same_date PASSED
+data_base/test_historical_price_repository.py::test_upsert_many_does_nothing_for_empty_list PASSED
+data_base/test_instrument_repository.py::test_get_by_id_returns_instrument PASSED
+data_base/test_instrument_repository.py::test_get_by_id_returns_none_for_nonexistent_instrument PASSED
+data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_instrument PASSED
+data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_none_when_not_found PASSED
+data_base/test_instrument_repository.py::test_get_all_returns_all_instruments_ordered_by_symbol PASSED
+data_base/test_instrument_repository.py::test_create_saves_instrument PASSED
+data_base/test_instrument_repository.py::test_create_rejects_duplicate_exchange_and_symbol PASSED
+data_base/test_instrument_repository.py::test_create_rejects_unsupported_currency PASSED
+data_base/test_market_data_migration.py::test_market_data_tables_exist PASSED
+data_base/test_market_data_migration.py::test_instruments_table_has_expected_columns PASSED
+data_base/test_market_data_migration.py::test_historical_prices_table_has_expected_columns PASSED
+data_base/test_market_data_migration.py::test_instruments_has_exchange_symbol_unique_constraint PASSED
+data_base/test_market_data_migration.py::test_historical_prices_has_unique_constraint PASSED
+data_base/test_market_data_migration.py::test_historical_prices_has_instrument_foreign_key PASSED
+data_base/test_market_data_migration.py::test_historical_prices_foreign_key_restricts_deletion PASSED
+data_base/test_market_data_migration.py::test_instruments_has_symbol_index PASSED
+data_base/test_market_data_migration.py::test_historical_prices_has_instrument_date_index PASSED
+data_base/test_market_data_migration.py::test_instruments_has_currency_check_constraint PASSED
+data_base/test_market_data_migration.py::test_historical_prices_has_price_check_constraint PASSED
+data_base/test_market_data_migration.py::test_historical_prices_has_currency_check_constraint PASSED
+data_base/test_market_data_models.py::test_create_instrument PASSED
+data_base/test_market_data_models.py::test_instrument_can_have_same_symbol_on_different_exchanges PASSED
+data_base/test_market_data_models.py::test_instrument_rejects_duplicate_exchange_and_symbol PASSED
+data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[PLN] PASSED
+data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[EUR] PASSED
+data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[GBP] PASSED
+data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[USD] PASSED
+data_base/test_market_data_models.py::test_instrument_rejects_unsupported_currency PASSED
+data_base/test_market_data_models.py::test_create_historical_price PASSED
+data_base/test_market_data_models.py::test_instrument_can_have_multiple_historical_prices PASSED
+data_base/test_market_data_models.py::test_historical_price_allows_different_sources PASSED
+data_base/test_market_data_models.py::test_historical_price_rejects_duplicate_instrument_date_source PASSED
+data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price0] PASSED
+data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price1] PASSED
+data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price2] PASSED
+data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[PLN] PASSED
+data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[EUR] PASSED
+data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[GBP] PASSED
+data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[USD] PASSED
+data_base/test_market_data_models.py::test_historical_price_rejects_unsupported_currency PASSED
+data_base/test_market_data_models.py::test_historical_price_requires_existing_instrument PASSED
+data_base/test_market_data_models.py::test_instrument_cannot_be_deleted_while_prices_exist PASSED
+data_base/test_market_data_models.py::test_instrument_relationship_returns_historical_prices PASSED
+data_base/test_portfolio_migration.py::test_portfolio_and_account_tables_exist PASSED
+data_base/test_portfolio_migration.py::test_portfolios_table_has_expected_columns PASSED
+data_base/test_portfolio_migration.py::test_accounts_table_has_expected_columns PASSED
+data_base/test_portfolio_migration.py::test_accounts_has_portfolio_foreign_key PASSED
+data_base/test_portfolio_migration.py::test_portfolios_has_owner_id_index PASSED
+data_base/test_portfolio_models.py::test_create_portfolio PASSED
+data_base/test_portfolio_models.py::test_create_account PASSED
+data_base/test_portfolio_models.py::test_portfolio_can_have_multiple_accounts PASSED
+data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[PLN] PASSED
+data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[EUR] PASSED
+data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[GBP] PASSED
+data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[USD] PASSED
+data_base/test_portfolio_models.py::test_portfolio_rejects_unsupported_currency PASSED
+data_base/test_portfolio_models.py::test_account_accepts_supported_types[BROKERAGE] PASSED
+data_base/test_portfolio_models.py::test_account_accepts_supported_types[SAVINGS] PASSED
+data_base/test_portfolio_models.py::test_account_accepts_supported_types[CASH] PASSED
+data_base/test_portfolio_models.py::test_account_rejects_unsupported_type PASSED
+data_base/test_portfolio_models.py::test_account_rejects_unsupported_currency PASSED
+data_base/test_portfolio_models.py::test_account_requires_existing_portfolio PASSED
+data_base/test_portfolio_models.py::test_portfolio_cannot_be_deleted_while_accounts_exist PASSED
+
+============================== slowest durations ==============================
+0.83s setup    data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_prices
+0.02s call     data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_prices
+0.01s call     data_base/test_market_data_migration.py::test_instruments_has_symbol_index
+0.01s call     data_base/test_market_data_migration.py::test_instruments_table_has_expected_columns
+0.01s call     data_base/test_market_data_migration.py::test_instruments_has_exchange_symbol_unique_constraint
+0.01s call     data_base/test_market_data_migration.py::test_historical_prices_has_instrument_foreign_key
+0.01s call     data_base/test_market_data_models.py::test_instrument_cannot_be_deleted_while_prices_exist
+0.00s call     data_base/test_historical_price_repository.py::test_get_latest_returns_most_recent_price
+0.00s call     data_base/test_historical_price_repository.py::test_upsert_many_updates_existing_price
+0.00s call     data_base/test_market_data_models.py::test_historical_price_rejects_duplicate_instrument_date_source
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_cannot_be_deleted_while_accounts_exist
+0.00s call     data_base/test_portfolio_migration.py::test_portfolios_has_owner_id_index
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_has_instrument_date_index
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_can_have_multiple_accounts
+0.00s call     data_base/test_market_data_models.py::test_instrument_relationship_returns_historical_prices
+0.00s call     data_base/test_market_data_migration.py::test_instruments_has_currency_check_constraint
+0.00s call     data_base/test_historical_price_repository.py::test_upsert_many_inserts_multiple_prices
+0.00s call     data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price0]
+0.00s call     data_base/test_market_data_migration.py::test_market_data_tables_exist
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_has_unique_constraint
+0.00s call     data_base/test_instrument_repository.py::test_create_rejects_duplicate_exchange_and_symbol
+0.00s call     data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price1]
+0.00s call     data_base/test_portfolio_models.py::test_account_rejects_unsupported_currency
+0.00s call     data_base/test_portfolio_models.py::test_account_rejects_unsupported_type
+0.00s call     data_base/test_market_data_models.py::test_instrument_rejects_duplicate_exchange_and_symbol
+0.00s call     data_base/test_instrument_repository.py::test_get_all_returns_all_instruments_ordered_by_symbol
+0.00s call     data_base/test_market_data_models.py::test_historical_price_rejects_unsupported_currency
+0.00s call     data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price2]
+0.00s call     data_base/test_historical_price_repository.py::test_upsert_many_allows_different_sources_for_same_date
+0.00s call     data_base/test_market_data_models.py::test_historical_price_allows_different_sources
+0.00s call     data_base/test_market_data_models.py::test_instrument_can_have_multiple_historical_prices
+0.00s call     data_base/test_market_data_models.py::test_instrument_rejects_unsupported_currency
+0.00s call     data_base/test_portfolio_migration.py::test_accounts_table_has_expected_columns
+0.00s call     data_base/test_portfolio_migration.py::test_portfolios_table_has_expected_columns
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_table_has_expected_columns
+0.00s call     data_base/test_portfolio_models.py::test_create_account
+0.00s call     data_base/test_portfolio_migration.py::test_accounts_has_portfolio_foreign_key
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_foreign_key_restricts_deletion
+0.00s call     data_base/test_instrument_repository.py::test_create_rejects_unsupported_currency
+0.00s call     data_base/test_portfolio_migration.py::test_portfolio_and_account_tables_exist
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_has_currency_check_constraint
+0.00s call     data_base/test_market_data_migration.py::test_historical_prices_has_price_check_constraint
+0.00s call     data_base/test_portfolio_models.py::test_account_requires_existing_portfolio
+0.00s call     data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_instrument
+0.00s call     data_base/test_market_data_models.py::test_historical_price_requires_existing_instrument
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_rejects_unsupported_currency
+0.00s call     data_base/test_market_data_models.py::test_instrument_can_have_same_symbol_on_different_exchanges
+0.00s call     data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[PLN]
+0.00s call     data_base/test_market_data_models.py::test_create_historical_price
+0.00s call     data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_empty_list
+0.00s call     data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[USD]
+0.00s call     data_base/test_historical_price_repository.py::test_get_latest_returns_none_when_no_prices_exist
+0.00s call     data_base/test_portfolio_models.py::test_account_accepts_supported_types[BROKERAGE]
+0.00s call     data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[EUR]
+0.00s call     data_base/test_portfolio_models.py::test_account_accepts_supported_types[CASH]
+0.00s call     data_base/test_portfolio_models.py::test_account_accepts_supported_types[SAVINGS]
+0.00s call     data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[GBP]
+0.00s call     data_base/test_portfolio_models.py::test_create_portfolio
+0.00s call     data_base/test_instrument_repository.py::test_get_by_id_returns_none_for_nonexistent_instrument
+0.00s call     data_base/test_instrument_repository.py::test_get_by_id_returns_instrument
+0.00s call     data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[PLN]
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[PLN]
+0.00s call     data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[GBP]
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[USD]
+0.00s call     data_base/test_market_data_models.py::test_create_instrument
+0.00s call     data_base/test_instrument_repository.py::test_create_saves_instrument
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[GBP]
+0.00s call     data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[EUR]
+0.00s call     data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_none_when_not_found
+0.00s call     data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[EUR]
+0.00s call     data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[USD]
+0.00s teardown data_base/test_market_data_models.py::test_instrument_rejects_duplicate_exchange_and_symbol
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_cannot_be_deleted_while_accounts_exist
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price0]
+0.00s teardown data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[PLN]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[USD]
+0.00s teardown data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_prices
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_can_have_multiple_accounts
+0.00s teardown data_base/test_historical_price_repository.py::test_upsert_many_allows_different_sources_for_same_date
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_rejects_unsupported_currency
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[USD]
+0.00s teardown data_base/test_portfolio_models.py::test_account_rejects_unsupported_currency
+0.00s teardown data_base/test_historical_price_repository.py::test_upsert_many_inserts_multiple_prices
+0.00s teardown data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_empty_list
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[GBP]
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[PLN]
+0.00s teardown data_base/test_market_data_models.py::test_instrument_relationship_returns_historical_prices
+0.00s teardown data_base/test_instrument_repository.py::test_create_rejects_unsupported_currency
+0.00s teardown data_base/test_portfolio_models.py::test_account_accepts_supported_types[CASH]
+0.00s teardown data_base/test_historical_price_repository.py::test_get_latest_returns_most_recent_price
+0.00s teardown data_base/test_market_data_models.py::test_create_historical_price
+0.00s teardown data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[USD]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[GBP]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price1]
+0.00s teardown data_base/test_instrument_repository.py::test_create_rejects_duplicate_exchange_and_symbol
+0.00s teardown data_base/test_market_data_models.py::test_instrument_can_have_same_symbol_on_different_exchanges
+0.00s teardown data_base/test_market_data_models.py::test_create_instrument
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_allows_different_sources
+0.00s teardown data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_instrument
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price2]
+0.00s teardown data_base/test_instrument_repository.py::test_create_saves_instrument
+0.00s teardown data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_none_when_not_found
+0.00s teardown data_base/test_historical_price_repository.py::test_get_latest_returns_none_when_no_prices_exist
+0.00s teardown data_base/test_market_data_models.py::test_instrument_cannot_be_deleted_while_prices_exist
+0.00s teardown data_base/test_portfolio_models.py::test_create_account
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_rejects_duplicate_instrument_date_source
+0.00s teardown data_base/test_historical_price_repository.py::test_upsert_many_updates_existing_price
+0.00s teardown data_base/test_portfolio_models.py::test_account_accepts_supported_types[BROKERAGE]
+0.00s teardown data_base/test_portfolio_models.py::test_account_accepts_supported_types[SAVINGS]
+0.00s teardown data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[GBP]
+0.00s teardown data_base/test_portfolio_models.py::test_account_rejects_unsupported_type
+0.00s teardown data_base/test_instrument_repository.py::test_get_by_id_returns_instrument
+0.00s teardown data_base/test_portfolio_models.py::test_account_requires_existing_portfolio
+0.00s teardown data_base/test_instrument_repository.py::test_get_all_returns_all_instruments_ordered_by_symbol
+0.00s teardown data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[EUR]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[EUR]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_requires_existing_instrument
+0.00s teardown data_base/test_portfolio_models.py::test_create_portfolio
+0.00s teardown data_base/test_market_data_models.py::test_instrument_rejects_unsupported_currency
+0.00s teardown data_base/test_market_data_models.py::test_instrument_can_have_multiple_historical_prices
+0.00s teardown data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[EUR]
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_rejects_unsupported_currency
+0.00s teardown data_base/test_instrument_repository.py::test_get_by_id_returns_none_for_nonexistent_instrument
+0.00s teardown data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[PLN]
+0.00s setup    data_base/test_portfolio_models.py::test_account_accepts_supported_types[BROKERAGE]
+0.00s setup    data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[PLN]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[PLN]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price1]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price0]
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_cannot_be_deleted_while_accounts_exist
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[USD]
+0.00s setup    data_base/test_instrument_repository.py::test_create_rejects_unsupported_currency
+0.00s setup    data_base/test_market_data_models.py::test_instrument_rejects_unsupported_currency
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[EUR]
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[USD]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_rejects_non_positive_price[price2]
+0.00s setup    data_base/test_historical_price_repository.py::test_get_latest_returns_most_recent_price
+0.00s setup    data_base/test_market_data_models.py::test_instrument_can_have_multiple_historical_prices
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[GBP]
+0.00s setup    data_base/test_portfolio_models.py::test_account_accepts_supported_types[SAVINGS]
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[PLN]
+0.00s setup    data_base/test_portfolio_models.py::test_create_account
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_rejects_unsupported_currency
+0.00s setup    data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[GBP]
+0.00s setup    data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[EUR]
+0.00s setup    data_base/test_portfolio_models.py::test_account_requires_existing_portfolio
+0.00s setup    data_base/test_historical_price_repository.py::test_get_latest_returns_none_when_no_prices_exist
+0.00s setup    data_base/test_portfolio_models.py::test_account_accepts_supported_types[CASH]
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_accepts_supported_currencies[GBP]
+0.00s setup    data_base/test_market_data_models.py::test_instrument_accepts_supported_currencies[USD]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_accepts_supported_currencies[EUR]
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_rejects_unsupported_currency
+0.00s setup    data_base/test_instrument_repository.py::test_create_rejects_duplicate_exchange_and_symbol
+0.00s setup    data_base/test_instrument_repository.py::test_get_all_returns_all_instruments_ordered_by_symbol
+0.00s setup    data_base/test_portfolio_models.py::test_account_rejects_unsupported_type
+0.00s setup    data_base/test_historical_price_repository.py::test_upsert_many_allows_different_sources_for_same_date
+0.00s setup    data_base/test_historical_price_repository.py::test_get_by_instrument_and_date_range_returns_empty_list
+0.00s setup    data_base/test_historical_price_repository.py::test_upsert_many_does_nothing_for_empty_list
+0.00s setup    data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_none_when_not_found
+0.00s setup    data_base/test_market_data_models.py::test_instrument_rejects_duplicate_exchange_and_symbol
+0.00s setup    data_base/test_market_data_models.py::test_create_historical_price
+0.00s setup    data_base/test_historical_price_repository.py::test_upsert_many_updates_existing_price
+0.00s setup    data_base/test_portfolio_models.py::test_account_rejects_unsupported_currency
+0.00s setup    data_base/test_instrument_repository.py::test_get_by_symbol_and_exchange_returns_instrument
+0.00s setup    data_base/test_market_data_models.py::test_create_instrument
+0.00s setup    data_base/test_market_data_models.py::test_instrument_relationship_returns_historical_prices
+0.00s setup    data_base/test_market_data_models.py::test_instrument_can_have_same_symbol_on_different_exchanges
+0.00s setup    data_base/test_instrument_repository.py::test_create_saves_instrument
+0.00s setup    data_base/test_portfolio_models.py::test_portfolio_can_have_multiple_accounts
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_requires_existing_instrument
+0.00s setup    data_base/test_market_data_models.py::test_instrument_cannot_be_deleted_while_prices_exist
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_allows_different_sources
+0.00s setup    data_base/test_portfolio_models.py::test_create_portfolio
+0.00s setup    data_base/test_instrument_repository.py::test_get_by_id_returns_none_for_nonexistent_instrument
+0.00s setup    data_base/test_historical_price_repository.py::test_upsert_many_inserts_multiple_prices
+0.00s setup    data_base/test_market_data_models.py::test_historical_price_rejects_duplicate_instrument_date_source
+0.00s setup    data_base/test_instrument_repository.py::test_get_by_id_returns_instrument
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_table_has_expected_columns
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_has_unique_constraint
+0.00s setup    data_base/test_portfolio_migration.py::test_portfolios_has_owner_id_index
+0.00s setup    data_base/test_portfolio_migration.py::test_accounts_table_has_expected_columns
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_has_price_check_constraint
+0.00s setup    data_base/test_market_data_migration.py::test_instruments_has_currency_check_constraint
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_has_currency_check_constraint
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_has_instrument_date_index
+0.00s setup    data_base/test_market_data_migration.py::test_instruments_table_has_expected_columns
+0.00s setup    data_base/test_market_data_migration.py::test_instruments_has_exchange_symbol_unique_constraint
+0.00s teardown data_base/test_historical_price_repository.py::test_upsert_many_does_nothing_for_empty_list
+0.00s setup    data_base/test_market_data_migration.py::test_market_data_tables_exist
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_foreign_key_restricts_deletion
+0.00s setup    data_base/test_portfolio_migration.py::test_portfolios_table_has_expected_columns
+0.00s setup    data_base/test_portfolio_migration.py::test_portfolio_and_account_tables_exist
+0.00s setup    data_base/test_market_data_migration.py::test_historical_prices_has_instrument_foreign_key
+0.00s setup    data_base/test_market_data_migration.py::test_instruments_has_symbol_index
+0.00s setup    data_base/test_portfolio_migration.py::test_accounts_has_portfolio_foreign_key
+0.00s teardown data_base/test_portfolio_migration.py::test_portfolio_and_account_tables_exist
+0.00s teardown data_base/test_market_data_migration.py::test_instruments_table_has_expected_columns
+0.00s call     data_base/test_historical_price_repository.py::test_upsert_many_does_nothing_for_empty_list
+0.00s teardown data_base/test_market_data_migration.py::test_instruments_has_exchange_symbol_unique_constraint
+0.00s teardown data_base/test_portfolio_migration.py::test_portfolios_table_has_expected_columns
+0.00s teardown data_base/test_portfolio_migration.py::test_accounts_has_portfolio_foreign_key
+0.00s teardown data_base/test_market_data_migration.py::test_instruments_has_symbol_index
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_has_unique_constraint
+0.00s teardown data_base/test_market_data_migration.py::test_instruments_has_currency_check_constraint
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_has_instrument_foreign_key
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_table_has_expected_columns
+0.00s teardown data_base/test_market_data_migration.py::test_market_data_tables_exist
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_has_instrument_date_index
+0.00s teardown data_base/test_portfolio_migration.py::test_portfolios_has_owner_id_index
+0.00s teardown data_base/test_portfolio_migration.py::test_accounts_table_has_expected_columns
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_has_price_check_constraint
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_has_currency_check_constraint
+0.00s teardown data_base/test_market_data_migration.py::test_historical_prices_foreign_key_restricts_deletion
+============================= 71 passed in 1.28s ==============================

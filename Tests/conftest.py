@@ -1,10 +1,11 @@
-from dotenv import load_dotenv
 import os
 import subprocess
 import sys
 from pathlib import Path
+import time
 
 import pytest
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import Session
 
@@ -33,26 +34,29 @@ def test_database_url() -> str:
 
 @pytest.fixture(scope="session")
 def migrated_database(test_database_url: str) -> str:
-    # Verify database connectivity before running migrations.
+    # 1. Database connectivity
+    start = time.perf_counter()
+
     test_engine = create_engine(test_database_url)
 
     try:
         with test_engine.connect() as connection:
             connection.execute(text("SELECT 1"))
     except Exception as exc:
-        pytest.fail(
-            f"Cannot connect to TEST_DATABASE_URL.\n"
-            f"Check PostgreSQL credentials and database availability.\n"
-            f"Details: {exc}"
-        )
+        pytest.fail(f"Cannot connect to TEST_DATABASE_URL.\nDetails: {exc}")
     finally:
         test_engine.dispose()
+
+    print(f"\n[PERF] Database connectivity: {time.perf_counter() - start:.2f}s")
+
+    # 2. Alembic migration
+    start: float = time.perf_counter()
 
     env = os.environ.copy()
     env["DATABASE_URL"] = test_database_url
 
     existing_pythonpath = env.get("PYTHONPATH", "")
-    env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(DATA_API_DIR), existing_pythonpath]))
+    env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(object=DATA_API_DIR), existing_pythonpath]))
 
     result = subprocess.run(
         [
@@ -70,6 +74,8 @@ def migrated_database(test_database_url: str) -> str:
         text=True,
         check=False,
     )
+
+    print(f"[PERF] Alembic migration: {time.perf_counter() - start:.2f}s")
 
     if result.returncode != 0:
         pytest.fail(f"Alembic migration failed.\n\nSTDOUT:\n{result.stdout}\n\nSTDERR:\n{result.stderr}")
