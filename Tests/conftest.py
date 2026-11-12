@@ -1,8 +1,8 @@
 import os
 import subprocess
 import sys
-from pathlib import Path
 import time
+from pathlib import Path
 
 import pytest
 from dotenv import load_dotenv
@@ -15,6 +15,7 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_API_DIR = ROOT_DIR / "Source_Code" / "data_api"
 ALEMBIC_CONFIG = DATA_API_DIR / "alembic.ini"
 load_dotenv()
+api_url = os.getenv("DATABASE_URL")
 
 sys.path.append(str(DATA_API_DIR))
 

@@ -144,8 +144,8 @@ class MarketDataService:
                 "instrument_id": instrument_id,
                 "price_date": price.price_date,
                 "close_price": price.close_price,
-                "currency": price.currency,
-                "source": price.source,
+                "currency": price.currency.strip().upper(),
+                "source": price.source.strip(),
             }
             for price in prices
         ]

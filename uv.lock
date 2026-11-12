@@ -722,6 +722,7 @@ dependencies = [
     { name = "alembic" },
     { name = "fastapi", extra = ["standard"] },
     { name = "psycopg", extra = ["binary"] },
+    { name = "pydantic" },
     { name = "sqlalchemy" },
     { name = "uvicorn" },
 ]
@@ -731,6 +732,7 @@ requires-dist = [
     { name = "alembic", specifier = ">=1.20.1" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.162.0" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.3.8" },
+    { name = "pydantic", specifier = ">=2.14.3" },
     { name = "sqlalchemy", specifier = ">=2.1.8" },
     { name = "uvicorn", specifier = ">=0.54.0" },
 ]
@@ -1030,6 +1032,8 @@ data-api = [
 ]
 data-base = [
     { name = "alembic" },
+    { name = "fastapi" },
+    { name = "httpx" },
     { name = "playwright" },
     { name = "psycopg", extra = ["binary"] },
     { name = "sqlalchemy" },
@@ -1046,6 +1050,8 @@ back-end = [{ name = "playwright", specifier = ">=1.63.0" }]
 data-api = [{ name = "playwright", specifier = ">=1.63.0" }]
 data-base = [
     { name = "alembic", specifier = ">=1.20.1" },
+    { name = "fastapi", specifier = ">=0.115" },
+    { name = "httpx", specifier = ">=0.27" },
     { name = "playwright", specifier = ">=1.63.0" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.3.8" },
     { name = "sqlalchemy", specifier = ">=2.1.8" },

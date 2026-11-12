@@ -2,7 +2,6 @@ from datetime import date
 from decimal import Decimal
 
 import pytest
-
 from app.repositories.historical_price_repository import (
     HistoricalPriceRepository,
 )
@@ -151,8 +150,8 @@ def test_save_prices_rejects_currency_mismatch(
 @pytest.mark.parametrize(
     "price",
     [
-        Decimal("0"),
-        Decimal("-1"),
+        Decimal(0),
+        Decimal(-1),
         Decimal("NaN"),
         Decimal("Infinity"),
     ],
