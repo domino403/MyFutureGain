@@ -16,6 +16,8 @@ DATA_API_DIR = ROOT_DIR / "Source_Code" / "data_api"
 ALEMBIC_CONFIG = DATA_API_DIR / "alembic.ini"
 load_dotenv()
 
+sys.path.append(str(DATA_API_DIR))
+
 
 @pytest.fixture(scope="session")
 def test_database_url() -> str:

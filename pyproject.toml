@@ -53,7 +53,15 @@ lines-after-imports = 2
 
 
 [tool.pytest.ini.options]
-addopts = "-ra -q -tb=short"
+addopts = "-ra --strict-markers"
+
 testpaths = [
-    "Tests"
+    "Tests/back_end",
+    "Tests/data_api",
+    "Tests/data_base",
+    "Tests/front_end",
+]
+
+pythonpath = [
+    "./Source_Code/data_api",
 ]
